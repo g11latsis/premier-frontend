@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
+import SideNav from './Components/Sidenav';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Components/Home';
+import Teams from './Components/Teams';
+import Players from './Components/Players';
+import Coaches from './Components/Coaches';
+import Stadiums from './Components/Stadiums';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <div className='main-content'>
+          <SideNav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/players" element={<Players />} />
+            <Route path="/coaches" element={<Coaches />} />
+            <Route path="/stadiums" element={<Stadiums />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
